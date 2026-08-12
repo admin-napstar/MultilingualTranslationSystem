@@ -1,0 +1,39 @@
+# Composer
+/vendor/
+
+# Environment / secrets
+.env
+.env.*
+!.env.example
+
+# PHP local configuration
+*.local.php
+
+# IDE
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Logs
+*.log
+
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.venv/
+venv/
+env/
+
+# Python model/cache files
+*.bin
+*.safetensors
+*.pt
+*.pth
+
+# XAMPP/local files
+xampp/
