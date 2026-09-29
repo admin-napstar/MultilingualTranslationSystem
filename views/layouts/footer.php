@@ -3,7 +3,7 @@
         <footer class="footer">
 
             <p>
-                Multilingual Translation System
+                2026 Multilingual Translation System | Nare Tlabela
             </p>
 
         </footer>

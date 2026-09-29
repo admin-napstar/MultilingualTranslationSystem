@@ -5,7 +5,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
+    /* background: #f5f7fb; */
     color: #1f2937;
 }
 
@@ -111,12 +111,13 @@ a {
 /* Content */
 
 .content {
-    padding: 30px;
+   padding:40px 30px ;
 }
 
 /* Footer */
 
 .footer {
+    text-align: center;
     padding: 20px 30px;
     color: #6b7280;
     font-size: 13px;
@@ -225,4 +226,61 @@ a {
     .swap-language {
         text-align: center;
     }
+}
+
+
+/* Dashboard */
+
+.dashboard {
+    min-height: calc(100vh - 75px);
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.45), rgba(17, 24, 39, 0.45)),
+        url("../images/dashboard-bg.jpg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+.dashboard-overlay {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 45px;
+    border-radius: 15px;
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-overlay h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 32px;
+    color: #111827;
+}
+
+.dashboard-overlay p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 17px;
+}
+/* Dashboard Background */
+
+.dashboard {
+    min-height: calc(100vh - 75px);
+    background-image:
+        linear-gradient(rgba(17, 24, 39, 0.35), rgba(17, 24, 39, 0.35)),
+        url("../images/Background1.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 60px;
 }

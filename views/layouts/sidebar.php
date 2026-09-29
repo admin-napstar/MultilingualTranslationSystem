@@ -17,11 +17,11 @@
         </a>
 
         <a href="translate.php">
-            Translate
+           Text Translate
         </a>
 
         <a href="#">
-            Documents
+            Documents Translate
         </a>
 
         <a href="#">

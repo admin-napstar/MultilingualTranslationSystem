@@ -15,14 +15,18 @@ require __DIR__ . '/views/layouts/header.php';
 
 <div class="dashboard">
 
-    <h2>
-        Welcome,
-        <?= htmlspecialchars($_SESSION['user_name']) ?>
-    </h2>
+    <div class="dashboard-overlay">
 
-    <p>
-        Welcome to the Multilingual Translation System.
-    </p>
+        <h2>
+            Welcome,
+            <?= htmlspecialchars($_SESSION['user_name']) ?> 
+        </h2>
+
+        <p>
+            Welcome to the Multilingual Translation System.
+        </p>
+
+    </div>
 
 </div>
 
