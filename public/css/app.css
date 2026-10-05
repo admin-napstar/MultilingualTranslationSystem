@@ -226,3 +226,65 @@ a {
         text-align: center;
     }
 }
+.textarea-wrapper {
+    position: relative;
+}
+
+.textarea-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 55px;
+}
+
+.mic-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.mic-button:hover {
+    background: #ddd;
+}
+
+.mic-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.speech-status {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.speaker-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f1f1;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.speaker-button:hover {
+    background: #ddd;
+}
+
+.speaker-button:active {
+    transform: scale(0.95);
+}
