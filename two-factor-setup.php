@@ -76,8 +76,9 @@ $otpUrl = $secret !== null
     <link rel="stylesheet" href="public/css/app.css">
 </head>
 <body>
-<main class="container">
-    <h1>Two-Factor Authentication Setup</h1>
+<main class="two-factor-page">
+    <section class="two-factor-card">
+        <div class="two-factor-icon" aria-hidden="true">🔐</div>
 
     <?php if ($error !== null): ?>
         <p class="error">
@@ -133,6 +134,7 @@ $otpUrl = $secret !== null
         </p>
 
     <?php endif; ?>
+    </section>
 </main>
 </body>
 </html>
