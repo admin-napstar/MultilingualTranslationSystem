@@ -150,7 +150,7 @@ git remote add origin https://github.com/admin-napstar/MultilingualTranslationAP
 
 http://localhost/MultilingualTranslationSystem/?utm_source=chatgpt.com
 
-INstall this command => composer require pragmarx/google2fa
+Install this command => composer require pragmarx/google2fa
 Then run this in DB
 ALTER TABLE users
     ADD COLUMN two_factor_enabled TINYINT(1) NOT NULL DEFAULT 0,

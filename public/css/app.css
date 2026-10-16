@@ -5,7 +5,7 @@
 body {
     margin: 0;
     font-family: Arial, Helvetica, sans-serif;
-    background: #f5f7fb;
+    /* background: #f5f7fb; */
     color: #1f2937;
 }
 
@@ -22,7 +22,7 @@ a {
 
 .sidebar {
     width: 250px;
-    background: #111827;
+    background: #666;
     color: white;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ a {
 
 .sidebar nav a:hover,
 .sidebar-bottom a:hover {
-    background: #1f2937;
+    background: #666;
     color: white;
 }
 
@@ -111,12 +111,13 @@ a {
 /* Content */
 
 .content {
-    padding: 30px;
+   padding:40px 30px ;
 }
 
 /* Footer */
 
 .footer {
+    text-align: center;
     padding: 20px 30px;
     color: #6b7280;
     font-size: 13px;
@@ -226,6 +227,60 @@ a {
         text-align: center;
     }
 }
+<<<<<<< HEAD
+
+
+/* Dashboard */
+
+.dashboard {
+    min-height: calc(100vh - 75px);
+   
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 40px;
+}
+
+.dashboard-overlay {
+    background: rgba(255, 255, 255, 0.92);
+    padding: 45px;
+    margin-left: 108px;
+    border-radius: 15px;
+    max-width: 650px;
+    width: 100%;
+    text-align: center;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+}
+
+.dashboard-overlay h2 {
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 32px;
+    color: #111827;
+}
+
+.dashboard-overlay p {
+    margin: 0;
+    color: #6b7280;
+    font-size: 17px;
+}
+/* Dashboard Background */
+
+.dashboard {
+    min-height: calc(100vh - 75px);
+    background-color: #666;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    padding: 60px;
+=======
 .textarea-wrapper {
     position: relative;
 }
@@ -287,4 +342,5 @@ a {
 
 .speaker-button:active {
     transform: scale(0.95);
+>>>>>>> 66e46a67f2807e206a5378a7a9002413ca36c0bd
 }

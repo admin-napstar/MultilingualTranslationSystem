@@ -54,9 +54,7 @@ $pageTitle = $pageTitle ?? 'Multilingual Translation System';
                     <?= htmlspecialchars($_SESSION['user_name'] ?? 'Guest') ?>
                 </span>
 
-                <a href="logout.php">
-                    Logout
-                </a>
+                
 
             </div>
 
