@@ -22,7 +22,7 @@ a {
 
 .sidebar {
     width: 250px;
-    background: #111827;
+    background: #666;
     color: white;
     display: flex;
     flex-direction: column;
@@ -61,7 +61,7 @@ a {
 
 .sidebar nav a:hover,
 .sidebar-bottom a:hover {
-    background: #1f2937;
+    background: #666;
     color: white;
 }
 
@@ -227,15 +227,14 @@ a {
         text-align: center;
     }
 }
+<<<<<<< HEAD
 
 
 /* Dashboard */
 
 .dashboard {
     min-height: calc(100vh - 75px);
-    background-image:
-        linear-gradient(rgba(17, 24, 39, 0.45), rgba(17, 24, 39, 0.45)),
-        url("../images/dashboard-bg.jpg");
+   
 
     background-size: cover;
     background-position: center;
@@ -251,6 +250,7 @@ a {
 .dashboard-overlay {
     background: rgba(255, 255, 255, 0.92);
     padding: 45px;
+    margin-left: 108px;
     border-radius: 15px;
     max-width: 650px;
     width: 100%;
@@ -274,13 +274,73 @@ a {
 
 .dashboard {
     min-height: calc(100vh - 75px);
-    background-image:
-        linear-gradient(rgba(17, 24, 39, 0.35), rgba(17, 24, 39, 0.35)),
-        url("../images/Background1.jpeg");
-
+    background-color: #666;
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
 
     padding: 60px;
+=======
+.textarea-wrapper {
+    position: relative;
+}
+
+.textarea-wrapper textarea {
+    width: 100%;
+    box-sizing: border-box;
+    padding-right: 55px;
+}
+
+.mic-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+
+    width: 40px;
+    height: 40px;
+
+    border: none;
+    border-radius: 50%;
+
+    background: #f1f1f1;
+
+    cursor: pointer;
+
+    font-size: 20px;
+}
+
+.mic-button:hover {
+    background: #ddd;
+}
+
+.mic-button:disabled {
+    opacity: 0.6;
+    cursor: not-allowed;
+}
+
+.speech-status {
+    margin-top: 6px;
+    font-size: 14px;
+}
+
+.speaker-button {
+    position: absolute;
+    right: 12px;
+    bottom: 12px;
+    width: 40px;
+    height: 40px;
+    border: none;
+    border-radius: 50%;
+    background: #f1f1f1;
+    cursor: pointer;
+    font-size: 20px;
+}
+
+.speaker-button:hover {
+    background: #ddd;
+}
+
+.speaker-button:active {
+    transform: scale(0.95);
+>>>>>>> 66e46a67f2807e206a5378a7a9002413ca36c0bd
 }

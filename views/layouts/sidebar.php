@@ -2,10 +2,10 @@
 
     <div class="logo">
 
-        <h2>MT System</h2>
+        <h2>Lingua-SA</h2>
 
         <span>
-            Multilingual Translation
+          A Multilingual Translation System for South African Languages
         </span>
 
     </div>
