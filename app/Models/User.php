@@ -72,4 +72,41 @@ class User
 
         return $user ?: null;
     }
+	
+	public function updateTwoFactorSettings(
+		int $userId,
+		?string $secret,
+		bool $enabled
+	): bool {
+		$stmt = $this->db->prepare(
+			'UPDATE users
+			 SET two_factor_secret = :secret,
+				 two_factor_enabled = :enabled
+			 WHERE id = :id'
+		);
+
+		return $stmt->execute([
+			'secret' => $secret,
+			'enabled' => $enabled ? 1 : 0,
+			'id' => $userId
+		]);
+	}
+
+	public function getTwoFactorSettings(int $userId): ?array
+	{
+		$stmt = $this->db->prepare(
+			'SELECT id, two_factor_enabled, two_factor_secret
+			 FROM users
+			 WHERE id = :id
+			 LIMIT 1'
+		);
+
+		$stmt->execute([
+			'id' => $userId
+		]);
+
+		$user = $stmt->fetch();
+
+		return $user ?: null;
+	}
 }

@@ -34,19 +34,41 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
                 $password
             );
 
-            if ($user !== null) {
+            
+			
+			if ($user !== null) {
 
-                session_regenerate_id(true);
+				$twoFactor = $auth->getTwoFactorSettings(
+					(int) $user['id']
+				);
 
-                $_SESSION['user_id'] = $user['id'];
-                $_SESSION['user_name'] = $user['name'];
-                $_SESSION['user_email'] = $user['email'];
-                $_SESSION['user_role'] = $user['role'];
+				if (
+					$twoFactor !== null
+					&& (int) $twoFactor['two_factor_enabled'] === 1
+				) {
+					// Keep the user pending until their code is verified.
+					session_regenerate_id(true);
 
-                header('Location: dashboard.php');
-                exit;
-            }
+					$_SESSION['pending_2fa_user_id'] = (int) $user['id'];
+					$_SESSION['pending_2fa_user_name'] = $user['name'];
+					$_SESSION['pending_2fa_user_email'] = $user['email'];
+					$_SESSION['pending_2fa_user_role'] = $user['role'];
 
+					header('Location: two-factor-verify.php');
+					exit;
+				}
+
+				// Normal login for users who have not enabled 2FA.
+				session_regenerate_id(true);
+
+				$_SESSION['user_id'] = $user['id'];
+				$_SESSION['user_name'] = $user['name'];
+				$_SESSION['user_email'] = $user['email'];
+				$_SESSION['user_role'] = $user['role'];
+
+				header('Location: dashboard.php');
+				exit;
+			}
             $error = 'Invalid email or password.';
 
         } catch (Exception $e) {

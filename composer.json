@@ -12,5 +12,7 @@
             "name": "Tlabela N"
         }
     ],
-    "require": {}
+    "require": {
+        "pragmarx/google2fa": "*"
+    }
 }

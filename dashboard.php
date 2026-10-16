@@ -13,18 +13,34 @@ require __DIR__ . '/views/layouts/header.php';
 
 ?>
 
+
 <div class="dashboard">
 
     <h2>
         Welcome,
-        <?= htmlspecialchars($_SESSION['user_name']) ?>
+        <?= htmlspecialchars($_SESSION['user_name'], ENT_QUOTES, 'UTF-8') ?>
     </h2>
 
     <p>
         Welcome to the Multilingual Translation System.
     </p>
 
+    <hr>
+
+    <h3>Account Security</h3>
+
+    <p>
+        Protect your account with two-factor authentication.
+    </p>
+
+    <p>
+        <a href="two-factor-setup.php">
+            Set Up Two-Factor Authentication
+        </a>
+    </p>
+
 </div>
+
 
 <?php
 

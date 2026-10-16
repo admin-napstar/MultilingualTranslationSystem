@@ -49,4 +49,21 @@ class AuthController
 
         return $user;
     }
+	
+	public function updateTwoFactorSettings(
+		int $userId,
+		?string $secret,
+		bool $enabled
+	): bool {
+		return $this->userModel->updateTwoFactorSettings(
+			$userId,
+			$secret,
+			$enabled
+		);
+	}
+
+	public function getTwoFactorSettings(int $userId): ?array
+	{
+		return $this->userModel->getTwoFactorSettings($userId);
+	}
 }

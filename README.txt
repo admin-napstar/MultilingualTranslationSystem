@@ -149,3 +149,25 @@ git remote add origin https://github.com/admin-napstar/MultilingualTranslationSy
 git remote add origin https://github.com/admin-napstar/MultilingualTranslationAPI.git
 
 http://localhost/MultilingualTranslationSystem/?utm_source=chatgpt.com
+
+INstall this command => composer require pragmarx/google2fa
+Then run this in DB
+ALTER TABLE users
+    ADD COLUMN two_factor_enabled TINYINT(1) NOT NULL DEFAULT 0,
+    ADD COLUMN two_factor_secret VARCHAR(255) NULL;
+	
+Install or open Google Authenticator or Microsoft Authenticator on your phone.
+Choose the option to add an account manually.
+Enter the secret key displayed on your setup page.
+Select Time-based if the app asks you to choose between time-based and counter-based codes.
+The app should generate a six-digit code that changes periodically.
+
+
+Download and install this => https://developers.cloudflare.com/tunnel/downloads if you using windows download the msi file not exe
+
+after installation make sure xammp is running and open a command prompt and enter
+	=> cloudflared tunnel --url http://localhost:80
+	Wait for Cloudflare to initialize the tunnel. You should see a public URL similar to:
+	https://random-words.trycloudflare.com
+	
+	After you see the randown https link in your command prompt copy that and add /MultilingualTranslationSystem/login.php to it in the browser and you site will be live till you close the command prompt
