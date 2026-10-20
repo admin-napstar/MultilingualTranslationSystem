@@ -1,8 +1,24 @@
 
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css">
+<?php
+$currentPage = basename($_SERVER['PHP_SELF']);
+?>
 
-<aside class="sidebar">
+<!-- Mobile menu button -->
+<button
+    type="button"
+    class="mobile-menu-toggle"
+    id="sidebarToggle"
+    aria-label="Open navigation menu"
+    aria-controls="appSidebar"
+    aria-expanded="false"
+>
+    <i class="fas fa-bars" aria-hidden="true"></i>
+</button>
 
+<!-- Mobile backdrop -->
+<div class="sidebar-backdrop" id="sidebarBackdrop"></div>
+
+<aside class="sidebar" id="appSidebar">
     <div class="logo">
         <h2>Lingua-SA</h2>
         <span>
@@ -10,26 +26,30 @@
         </span>
     </div>
 
-    <nav>
+    <nav aria-label="Main navigation">
         <p class="sidebar-heading">WORKSPACE</p>
 
-        <a href="dashboard.php">
-            <i class="fas fa-chart-line"></i>
+        <a href="dashboard.php"
+           class="<?= $currentPage === 'dashboard.php' ? 'active' : '' ?>">
+            <i class="fas fa-chart-line" aria-hidden="true"></i>
             <span>Dashboard</span>
         </a>
 
-        <a href="translate.php">
-            <i class="fas fa-language"></i>
+        <a href="translate.php"
+           class="<?= $currentPage === 'translate.php' ? 'active' : '' ?>">
+            <i class="fas fa-language" aria-hidden="true"></i>
             <span>Text Translation</span>
         </a>
 
-        <a href="document_translate.php">
-            <i class="fas fa-file-alt"></i>
+        <a href="document_translate.php"
+           class="<?= $currentPage === 'document_translate.php' ? 'active' : '' ?>">
+            <i class="fas fa-file-alt" aria-hidden="true"></i>
             <span>Document Translation</span>
         </a>
 
-        <a href="history.php">
-            <i class="fas fa-history"></i>
+        <a href="history.php"
+           class="<?= $currentPage === 'history.php' ? 'active' : '' ?>">
+            <i class="fas fa-history" aria-hidden="true"></i>
             <span>Translation History</span>
         </a>
 
@@ -37,27 +57,29 @@
             QUALITY &amp; MANAGEMENT
         </p>
 
-        <a href="evaluation.php">
-            <i class="fas fa-chart-bar"></i>
+        <a href="evaluation.php"
+           class="<?= $currentPage === 'evaluation.php' ? 'active' : '' ?>">
+            <i class="fas fa-chart-bar" aria-hidden="true"></i>
             <span>Translation Evaluation</span>
         </a>
 
-        <a href="datasets.php">
-            <i class="fas fa-database"></i>
+        <a href="datasets.php"
+           class="<?= $currentPage === 'datasets.php' ? 'active' : '' ?>">
+            <i class="fas fa-database" aria-hidden="true"></i>
             <span>Datasets &amp; References</span>
         </a>
 
-        <a href="settings.php">
-            <i class="fas fa-cog"></i>
+        <a href="settings.php"
+           class="<?= $currentPage === 'settings.php' ? 'active' : '' ?>">
+            <i class="fas fa-cog" aria-hidden="true"></i>
             <span>Settings</span>
         </a>
     </nav>
 
     <div class="sidebar-bottom">
         <a href="logout.php">
-            <i class="fas fa-sign-out-alt"></i>
+            <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
             <span>Logout</span>
         </a>
     </div>
-
 </aside>
