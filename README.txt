@@ -171,3 +171,26 @@ after installation make sure xammp is running and open a command prompt and ente
 	https://random-words.trycloudflare.com
 	
 	After you see the randown https link in your command prompt copy that and add /MultilingualTranslationSystem/login.php to it in the browser and you site will be live till you close the command prompt
+	
+Step 1 — Enable ZIP and GD in XAMPP
+1. Open XAMPP Control Panel.
+2. Click Config next to Apache.
+3. Select PHP (php.ini).
+4. Find these lines using Ctrl + F:
+	=> ;extension=zip
+	=> ;extension=gd
+5. Remove the ; from both lines
+6. Open Command Prompt and run: C:\xampp\php\php.exe -m | findstr /I "zip gd"
+	=> You should see 
+		gd
+		zip
+7. In the command prompt run: 
+	=> cd C:\xampp\htdocs\MultilingualTranslationSystem
+	=> composer require phpoffice/phpword smalot/pdfparser
+	
+8. Your Python translation API is running at http://127.0.0.1:5000/api/translate.
+9. PHP's cURL and mbstring extensions are enabled. In Command Prompt, run:
+	C:\xampp\php\php.exe -m | findstr /I "curl mbstring"
+
+
+	Both curl and mbstring should appear.

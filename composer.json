@@ -13,6 +13,8 @@
         }
     ],
     "require": {
-        "pragmarx/google2fa": "*"
+        "pragmarx/google2fa": "*",
+        "phpoffice/phpword": "^1.4",
+        "smalot/pdfparser": "^2.13"
     }
 }

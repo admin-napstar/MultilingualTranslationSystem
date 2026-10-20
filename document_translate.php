@@ -533,27 +533,20 @@ $allowedLanguages = [
 
                     <div class="language-grid">
                         <div class="language-field">
-                            <label for="sourceLanguage">
-                                Source Language
-                            </label>
-
-                            <select id="sourceLanguage"
-                                    name="source_language" required>
-                                <?php foreach ($allowedLanguages as $language): ?>
-                                    <option value="<?= htmlspecialchars($language) ?>"
-                                        <?= $language === 'English' ? 'selected' : '' ?>>
-                                        <?= htmlspecialchars($language) ?>
-                                    </option>
-                                <?php endforeach; ?>
-                            </select>
+                            <label for="sourceLanguage">Source Language</label>
+                            <input
+                                type="text"
+                                id="sourceLanguage"
+                                value="English"
+                                readonly
+                            >
+                            <input
+                                type="hidden"
+                                name="source_language"
+                                value="English"
+                            >
+                            <small>Documents are translated from English.</small>
                         </div>
-
-                        <button type="button"
-                                class="swap-languages"
-                                id="swapLanguages"
-                                aria-label="Swap languages">
-                            <i class="fas fa-right-left"></i>
-                        </button>
 
                         <div class="language-field">
                             <label for="targetLanguage">
@@ -696,18 +689,6 @@ uploadArea.addEventListener('drop', function (event) {
         alert('Please use Browse Files to select your document.');
     }
 });
-
-document.getElementById('swapLanguages')
-    .addEventListener('click', function () {
-        const source = document.getElementById('sourceLanguage');
-        const target = document.getElementById('targetLanguage');
-
-        const sourceValue = source.value;
-        const targetValue = target.value;
-
-        source.value = targetValue;
-        target.value = sourceValue;
-    });
 
 form.addEventListener('submit', function (event) {
     if (!fileInput.files.length) {
