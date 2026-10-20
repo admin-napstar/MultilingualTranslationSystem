@@ -10,53 +10,53 @@
         </span>
     </div>
 
-   <nav>
-
+    <nav>
         <p class="sidebar-heading">WORKSPACE</p>
 
         <a href="dashboard.php">
             <i class="fas fa-chart-line"></i>
-            Dashboard
+            <span>Dashboard</span>
         </a>
 
         <a href="translate.php">
             <i class="fas fa-language"></i>
-            Text Translation
+            <span>Text Translation</span>
         </a>
 
         <a href="document_translate.php">
             <i class="fas fa-file-alt"></i>
-            Document Translation
+            <span>Document Translation</span>
         </a>
 
         <a href="history.php">
             <i class="fas fa-history"></i>
-            Translation History
+            <span>Translation History</span>
         </a>
 
-        <p class="sidebar-bottom">QUALITY &amp; MANAGEMENT</p>
+        <p class="sidebar-heading management-heading">
+            QUALITY &amp; MANAGEMENT
+        </p>
 
         <a href="evaluation.php">
             <i class="fas fa-chart-bar"></i>
-            Translation Evaluation
+            <span>Translation Evaluation</span>
         </a>
 
         <a href="datasets.php">
             <i class="fas fa-database"></i>
-            Datasets &amp; References
+            <span>Datasets &amp; References</span>
         </a>
 
         <a href="settings.php">
             <i class="fas fa-cog"></i>
-            Settings
+            <span>Settings</span>
         </a>
-
     </nav>
 
     <div class="sidebar-bottom">
         <a href="logout.php">
             <i class="fas fa-sign-out-alt"></i>
-            Logout
+            <span>Logout</span>
         </a>
     </div>
 
