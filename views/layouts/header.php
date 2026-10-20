@@ -40,13 +40,22 @@ $pageTitle = $pageTitle ?? 'Multilingual Translation System';
 
     <main class="main-content">
 
-        <header class="topbar">
 
-            <div>
-                <h1>
-                    <?= htmlspecialchars($pageTitle) ?>
-                </h1>
-            </div>
+<header class="topbar">
+    <div class="topbar-title">
+        <button
+            class="sidebar-toggle"
+            id="sidebarToggle"
+            type="button"
+            aria-label="Open navigation"
+            aria-expanded="false"
+            aria-controls="sidebar"
+        >
+            <i class="fas fa-bars"></i>
+        </button>
+
+        <h1><?= htmlspecialchars($pageTitle) ?></h1>
+    </div>
 
             <div class="user-info">
 
