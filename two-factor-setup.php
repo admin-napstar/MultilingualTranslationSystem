@@ -74,9 +74,41 @@ $otpUrl = $secret !== null
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Set Up Two-Factor Authentication</title>
     <link rel="stylesheet" href="public/css/app.css">
+    <style>
+.back-dashboard {
+    margin-top: 24px;
+    text-align: center;
+}
+
+.dashboard-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 12px 20px;
+    background: #2563eb;
+    color: #ffffff;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: background 0.2s ease;
+}
+
+.dashboard-button:hover {
+    background: #1d4ed8;
+    color: #ffffff;
+}
+</style>
 </head>
 <body>
 <main class="two-factor-page">
+
+<div class="back-dashboard">
+    <a href="dashboard.php" class="dashboard-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Dashboard
+    </a>
+</div>
     <section class="two-factor-card">
         <div class="two-factor-icon" aria-hidden="true">🔐</div>
 

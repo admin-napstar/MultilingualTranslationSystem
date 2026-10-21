@@ -63,11 +63,7 @@ $currentPage = basename($_SERVER['PHP_SELF']);
             <span>Translation Evaluation</span>
         </a>
 
-        <a href="datasets.php"
-           class="<?= $currentPage === 'datasets.php' ? 'active' : '' ?>">
-            <i class="fas fa-database" aria-hidden="true"></i>
-            <span>Datasets &amp; References</span>
-        </a>
+        
 
         <a href="settings.php"
            class="<?= $currentPage === 'settings.php' ? 'active' : '' ?>">

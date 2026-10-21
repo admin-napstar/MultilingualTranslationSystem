@@ -17,7 +17,7 @@ unset($_SESSION['document_status']);
 $translatedFile = $_SESSION['translated_document'] ?? '';
 
 $allowedLanguages = [
-    'English',
+
     'Sesotho',
     'isiZulu',
     'isiXhosa',
@@ -257,8 +257,8 @@ $allowedLanguages = [
         }
 
         .language-field select {
-            width: 100%;
-            padding: 13px;
+            width: 172%;
+            padding: 6px;
             border: 1px solid #dbe4f0;
             border-radius: 10px;
             outline: none;

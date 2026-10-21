@@ -39,6 +39,38 @@ $pageTitle = $pageTitle ?? 'Multilingual Translation System';
     <?php require __DIR__ . '/sidebar.php'; ?>
 
     <main class="main-content">
+    
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+    const toggle = document.getElementById('sidebarToggle');
+    const sidebar = document.getElementById('sidebar');
+
+    if (!toggle || !sidebar) return;
+
+    toggle.addEventListener('click', function () {
+        const isOpen = sidebar.classList.toggle('is-open');
+
+        toggle.setAttribute('aria-expanded', String(isOpen));
+        toggle.setAttribute(
+            'aria-label',
+            isOpen ? 'Close navigation' : 'Open navigation'
+        );
+
+        toggle.innerHTML = isOpen
+            ? '<i class="fas fa-times"></i>'
+            : '<i class="fas fa-bars"></i>';
+    });
+
+    document.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape') {
+            sidebar.classList.remove('is-open');
+            toggle.setAttribute('aria-expanded', 'false');
+            toggle.setAttribute('aria-label', 'Open navigation');
+            toggle.innerHTML = '<i class="fas fa-bars"></i>';
+        }
+    });
+});
+</script>
 
 
 <header class="topbar">
