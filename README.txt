@@ -194,3 +194,35 @@ Step 1 — Enable ZIP and GD in XAMPP
 
 
 	Both curl and mbstring should appear.
+	
+	
+	
+===============NEW STUFF===================
+
+In phpMyAdmin:
+1. Select multilingual_translation.
+2. Click the SQL tab.
+3. Paste and execute this SQL:
+	
+CREATE TABLE translation_evaluations (
+    id BIGINT UNSIGNED NOT NULL AUTO_INCREMENT,
+    user_id INT UNSIGNED NOT NULL,
+    source_language_id INT UNSIGNED NOT NULL,
+    target_language_id INT UNSIGNED NOT NULL,
+    source_text LONGTEXT NOT NULL,
+    machine_translation LONGTEXT NOT NULL,
+    corrected_translation LONGTEXT NOT NULL,
+    similarity_score DECIMAL(5,2) DEFAULT NULL,
+    created_at TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+    PRIMARY KEY (id),
+    INDEX idx_evaluation_user (user_id),
+    INDEX idx_evaluation_languages (
+        source_language_id,
+        target_language_id
+    ),
+    INDEX idx_evaluation_created (created_at)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+
+Just for information
+	One important note: the confidence percentage is an indicator based on the model's generated-token probabilities. It does not guarantee that the translation is accurate.

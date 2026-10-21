@@ -1,44 +1,121 @@
 
+
 <?php
-session_start();
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit;
+    }
+    require_once __DIR__ . '/vendor/autoload.php';
+    use Napstar\MultilingualTranslationSystem\Services\Database;
+    use Napstar\MultilingualTranslationSystem\Models\Language;
 
-$pageTitle = 'Translation History';
+    $pageTitle = 'Translation History';
+    $history = [];
+    $historyError = false;
+    $activeLanguages = [];
 
-require_once __DIR__ . '/views/layouts/header.php';
+    try {
+        $database = new Database();
+        $db = $database->getConnection();
 
-// Temporary sample records for the UI.
-// Replace these with database records when the history table is ready.
-$history = [
-    [
-        'type' => 'Text',
-        'source' => 'English',
-        'target' => 'isiZulu',
-        'date' => '2026-10-21 14:30',
-        'status' => 'Completed'
-    ],
-    [
-        'type' => 'Document',
-        'source' => 'isiXhosa',
-        'target' => 'English',
-        'date' => '2026-10-20 11:15',
-        'status' => 'Completed'
-    ],
-    [
-        'type' => 'Text',
-        'source' => 'English',
-        'target' => 'Sesotho',
-        'date' => '2026-10-19 09:45',
-        'status' => 'Completed'
-    ],
-];
+        $userId = filter_var(
+            $_SESSION['user_id'],
+            FILTER_VALIDATE_INT,
+            ['options' => ['min_range' => 1]]
+        );
 
-$totalTranslations = count($history);
+        if ($userId === false) {
+            throw new RuntimeException('Invalid user session.');
+        }
+
+        // Fetch the user's text translations.
+        $stmt = $db->prepare(
+            'SELECT
+                t.id,
+                sl.name AS source_language,
+                tl.name AS target_language,
+                t.created_at
+            FROM translations t
+            LEFT JOIN languages sl ON sl.id = t.source_language_id
+            LEFT JOIN languages tl ON tl.id = t.target_language_id
+            WHERE t.user_id = :user_id
+            ORDER BY t.created_at DESC'
+        );
+
+        $stmt->execute(['user_id' => $userId]);
+
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $history[] = [
+                'type' => 'Text',
+                'source' => $row['source_language'] ?? 'Unknown',
+                'target' => $row['target_language'] ?? 'Unknown',
+                'date' => $row['created_at'] ?? '',
+                'status' => 'Completed',
+            ];
+        }
+
+        // Fetch the user's document translations.
+        $stmt = $db->prepare(
+            'SELECT
+                d.id,
+                d.original_filename,
+                d.translated_filename,
+                d.status,
+                d.created_at,
+                sl.name AS source_language,
+                tl.name AS target_language
+            FROM documents d
+            LEFT JOIN languages sl ON sl.id = d.source_language_id
+            LEFT JOIN languages tl ON tl.id = d.target_language_id
+            WHERE d.user_id = :user_id
+            ORDER BY d.created_at DESC'
+        );
+
+        $stmt->execute(['user_id' => $userId]);
+
+        foreach ($stmt->fetchAll(PDO::FETCH_ASSOC) as $row) {
+            $history[] = [
+                'type' => 'Document',
+                'source' => $row['source_language'] ?? 'Unknown',
+                'target' => $row['target_language'] ?? 'Unknown',
+                'date' => $row['created_at'] ?? '',
+                'status' => ucfirst($row['status'] ?? 'unknown'),
+            ];
+        }
+
+        // Sort text and document records together, newest first.
+        usort($history, function ($a, $b) {
+            return strtotime($b['date']) <=> strtotime($a['date']);
+        });
+
+        // Get active languages for the language filter.
+        $languageModel = new Language();
+        $activeLanguages = $languageModel->getActiveLanguages();
+
+    } catch (Throwable $e) {
+        error_log('Translation history error: ' . $e->getMessage());
+        $history = [];
+        $historyError = true;
+    }
+
+    $totalTranslations = count($history);
+
+    $textCount = count(array_filter(
+        $history,
+        fn($item) => $item['type'] === 'Text'
+    ));
+
+    $documentCount = count(array_filter(
+        $history,
+        fn($item) => $item['type'] === 'Document'
+    ));
+
+    require_once __DIR__ . '/views/layouts/header.php';
+
 ?>
+
 
 <style>
 .history-page {
@@ -213,6 +290,12 @@ $totalTranslations = count($history);
 </style>
 
 <main class="history-page">
+    
+    <?php if ($historyError): ?>
+        <div role="alert" style="padding: 12px; margin-bottom: 16px; color: #991b1b; background: #fee2e2; border-radius: 8px;">
+            Could not load translation history. Please refresh the page or try again later.
+        </div>
+    <?php endif; ?>
 
     <div class="history-heading">
         <div>
@@ -274,13 +357,20 @@ $totalTranslations = count($history);
                 <option value="Document">Document</option>
             </select>
 
+            
             <select id="languageFilter" aria-label="Filter by language">
                 <option value="">All Languages</option>
-                <option value="English">English</option>
-                <option value="isiZulu">isiZulu</option>
-                <option value="isiXhosa">isiXhosa</option>
-                <option value="Sesotho">Sesotho</option>
+                <?php foreach ($activeLanguages as $language): ?>
+                    <option value="<?= htmlspecialchars($language['name'],ENT_QUOTES,'UTF-8') ?>">
+                        <?= htmlspecialchars(
+                            $language['name'],
+                            ENT_QUOTES,
+                            'UTF-8'
+                        ) ?>
+                    </option>
+                <?php endforeach; ?>
             </select>
+
         </div>
 
         <div class="history-table-wrap">

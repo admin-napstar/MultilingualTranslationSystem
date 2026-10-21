@@ -1,34 +1,27 @@
 
+
 <?php
 
-session_start();
+    session_start();
+    if (!isset($_SESSION['user_id'])) {
+        header('Location: login.php');
+        exit;
+    }
+    require_once __DIR__ . '/vendor/autoload.php';
+    use Napstar\MultilingualTranslationSystem\Models\Language;
+    $languageModel = new Language();
+    $targetLanguages = array_filter(
+        $languageModel->getActiveLanguages(),
+        fn($language) => $language['code'] !== 'eng_Latn'
+    );
+    $pageTitle = 'Document Translation';
+    $status = $_SESSION['document_status'] ?? '';
+    unset($_SESSION['document_status']);
+    $translatedFile = $_SESSION['translated_document'] ?? '';
+    require __DIR__ . '/views/layouts/header.php';
 
-if (!isset($_SESSION['user_id'])) {
-    header('Location: login.php');
-    exit;
-}
-require __DIR__ . '/views/layouts/header.php';
-
-
-$pageTitle = 'Document Translation';
-$status = $_SESSION['document_status'] ?? '';
-unset($_SESSION['document_status']);
-
-$translatedFile = $_SESSION['translated_document'] ?? '';
-
-$allowedLanguages = [
-
-    'Sesotho',
-    'isiZulu',
-    'isiXhosa',
-    'Setswana',
-    'Sepedi',
-    'itsonga',
-    'Tshivenda',
-    'Siswati',
-    'isiNdebele'
-];
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -553,12 +546,13 @@ $allowedLanguages = [
                                 Target Language
                             </label>
 
-                            <select id="targetLanguage"
-                                    name="target_language" required>
-                                <?php foreach ($allowedLanguages as $language): ?>
-                                    <option value="<?= htmlspecialchars($language) ?>"
-                                        <?= $language === 'Sesotho' ? 'selected' : '' ?>>
-                                        <?= htmlspecialchars($language) ?>
+                            <select id="targetLanguage" name="target_language" required>
+                                <option value="">-- Select Target Language --</option>
+                                <?php foreach ($targetLanguages as $language): ?>
+                                    <option
+                                        value="<?= htmlspecialchars($language['name'], ENT_QUOTES, 'UTF-8') ?>"
+                                    >
+                                        <?= htmlspecialchars($language['name'], ENT_QUOTES, 'UTF-8') ?>
                                     </option>
                                 <?php endforeach; ?>
                             </select>
