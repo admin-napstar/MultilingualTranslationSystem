@@ -51,7 +51,7 @@ a {
 }
 
 .sidebar nav {
-    padding: 20px 10px;
+    padding: 1px 7px;
 }
 
 .sidebar nav a,
@@ -65,7 +65,7 @@ a {
 
 .sidebar nav a:hover,
 .sidebar-bottom a:hover {
-    background: #172554;
+    background: #3b82f6;
     color: white;
 }
 
@@ -932,7 +932,7 @@ a {
 }
 
 .two-factor-card a {
-    color: #2563EB;
+    color:white;
     font-weight: 600;
     text-decoration: none;
 }
@@ -1137,7 +1137,7 @@ a {
     margin-top: auto;
     padding: 15px 12px;
     border-top: 1px solid #1E293B;
-    background: #0B1224;
+
 }
 
 .sidebar-bottom a {
@@ -1146,7 +1146,7 @@ a {
     gap: 12px;
     padding: 12px 13px;
     border-radius: 9px;
-    color: #FCA5A5;
+    color: #110b69;
     text-decoration: none;
     font-size: 13px;
 }
