@@ -538,7 +538,8 @@ $allowedLanguages = [
                                 type="text"
                                 id="sourceLanguage"
                                 value="English"
-                                readonly
+                                readonly style="border-radius: 10px;
+                                padding: 6px 7px"
                             >
                             <input
                                 type="hidden"

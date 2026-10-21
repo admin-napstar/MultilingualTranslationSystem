@@ -103,12 +103,7 @@ $otpUrl = $secret !== null
 <body>
 <main class="two-factor-page">
 
-<div class="back-dashboard">
-    <a href="dashboard.php" class="dashboard-button">
-        <i class="fas fa-arrow-left"></i>
-        Back to Dashboard
-    </a>
-</div>
+
     <section class="two-factor-card">
         <div class="two-factor-icon" aria-hidden="true">🔐</div>
 
@@ -127,6 +122,13 @@ $otpUrl = $secret !== null
     <?php if ($settings !== null && (int) $settings['two_factor_enabled'] === 1): ?>
 
         <p>Two-factor authentication is enabled for your account.</p>
+
+        <div class="back-dashboard">
+    <a href="dashboard.php" class="dashboard-button">
+        <i class="fas fa-arrow-left"></i>
+        Back to Dashboard
+    </a>
+</div>
 
     <?php elseif ($secret !== null): ?>
 
